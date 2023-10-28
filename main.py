@@ -25,14 +25,14 @@ def jitter(min_secs: float, max_secs: float) -> float:
 def bordered(text):
     lines = text.splitlines()
     width = max(len(s) for s in lines)
-    res = [f'{reset_color}{feol}┌' + '─' * width + f'{feol}{reset_color}┐']
+    res = [f'{reset_color}{violet}┌' + '─' * width + f'{violet}{reset_color}┐']
     count = 0
     for s in lines:
         a = ""
         count += 1
         if count == 2: a = "\t\t"
-        res.append(f'{reset_color}{feol}│{reset_color}' + (s + ' ' * width)[:width] + f'{reset_color}{feol}{a}│{reset_color}')
-    res.append(f'{reset_color}{feol}└' + f'{feol}─' * width + f'{feol}┘{reset_color}')
+        res.append(f'{reset_color}{violet}│{reset_color}' + (s + ' ' * width)[:width] + f'{reset_color}{violet}{a}│{reset_color}')
+    res.append(f'{reset_color}{violet}└' + f'{violet}─' * width + f'{violet}┘{reset_color}')
     return '\n'.join(res)
 
 def main() -> NoReturn:

@@ -30,10 +30,10 @@ def main() -> NoReturn:
         else:
             status = f"{reset_color}{green}OK{reset_color}"
 
-        print(f"IP: {host}\n \
-            Status: {status}\n \
-            Speed: {ping_response.rtt_min_ms} ms\n \
-            Packets Lost: {ping_response.stats_packets_lost}/3 packets \n \
+        print(f"IP: {host} \n \
+            Status: {status} \n \
+            Speed: {ping_response.rtt_min_ms} ms \n \
+            Packets Lost: {ping_response.stats_packets_lost}/3 \n \
             Jitter: {round(((ping_response.rtt_min_ms + ping_response.rtt_max_ms) / 2), 2)} ms")
 
 if __name__ == "__main__":

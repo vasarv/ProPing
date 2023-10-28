@@ -25,7 +25,7 @@ def jitter(min_secs: float, max_secs: float) -> float:
 def bordered(text):
     lines = text.splitlines()
     width = max(len(s) for s in lines)
-    res = [f'{reset_color}{violet}┌' + '─' * width + f'{violet}{reset_color}┐']
+    res = [f'{reset_color}{violet}┌' + '─' * width + f'{violet}┐{reset_color}']
     count = 0
     for s in lines:
         a = ""

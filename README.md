@@ -6,4 +6,4 @@
     $ pip install -r requirements.txt
 
 ## Using
-    python main.py {ip}
+    $ python main.py {ip}

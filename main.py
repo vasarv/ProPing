@@ -22,16 +22,17 @@ def jitter(min_secs: float, max_secs: float) -> float:
     
     return round(((min_secs + max_secs) / 2), 2)
 
-def bordered(text):
+def bordered(text: str, add: int = 0, rm: int = 0) -> str:
     lines = text.splitlines()
     width = max(len(s) for s in lines)
     res = [f'{reset_color}{violet}┌' + '─' * width + f'{violet}┐{reset_color}']
     count = 0
     for s in lines:
-        a = ""
         count += 1
-        if count == 2: a = "\t\t"
-        res.append(f'{reset_color}{violet}│{reset_color}' + (s + ' ' * width)[:width] + f'{reset_color}{violet}{a}│{reset_color}')
+        if count == 2:
+            res.append(f'{reset_color}{violet}│{reset_color}' + (s + ' ' * (width + (add - rm)))[:(width + (add - rm))] + f'{reset_color}{violet}│{reset_color}')
+        else:
+            res.append(f'{reset_color}{violet}│{reset_color}' + (s + ' ' * width)[:width] + f'{reset_color}{violet}│{reset_color}')
     res.append(f'{reset_color}{violet}└' + f'{violet}─' * width + f'{violet}┘{reset_color}')
     return '\n'.join(res)
 
@@ -54,7 +55,7 @@ def main() -> NoReturn:
             Status: {status} \n \
             Speed: {ping_response.rtt_min_ms} ms \n \
             Packets Lost: {ping_response.stats_packets_lost}/3 packets \n \
-            Jitter: {jitter(ping_response.rtt_min_ms, ping_response.rtt_max_ms)} ms"))
+            Jitter: {jitter(ping_response.rtt_min_ms, ping_response.rtt_max_ms)} ms", add=13))
 
 if __name__ == "__main__":
     main()
